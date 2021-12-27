@@ -1,0 +1,57 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class [ScriptName] : []
+{
+    private Vector3 _currentTarget;
+    [SerializeField]
+    private SpriteRenderer Sprite;
+    [SerializeField]
+    private Transform PointA, PointB;  //You need to add PointA and PointB as game objects, it will determine where the enemy will patrol.
+    public int speed;
+ 
+
+
+    void Start()
+    {
+      Sprite = GetComponentInChildren<SpriteRenderer>(); // get sprite from ... sprite ?
+    }
+
+
+      void Update()
+    {
+        Movement();
+    }
+
+      
+
+       void Movement()
+       {
+
+         if(_currentTarget == PointA.position) //flip sprite on x axis based on where you're facing
+        {
+            Sprite.flipX = true;
+        }
+        else
+        {
+            Sprite.flipX = false;
+        }   
+        
+          if(transform.position == PointA.position)  //if enemy reaches pointA switch to other side
+       {      
+          _currentTarget = PointB.position; 
+       }
+       else if(transform.position == PointB.position) //if enemy reaches pointB switch to other side
+       {
+         _currentTarget = PointA.position;
+       }
+
+
+       transform.position = Vector3.MoveTowards(transform.position, _currentTarget, speed * Time.deltaTime); //Vector3.MoveTowards explains itself
+
+     }
+
+
+
+}
