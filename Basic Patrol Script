@@ -8,14 +8,14 @@ public class [ScriptName] : []
     [SerializeField]
     private SpriteRenderer Sprite;
     [SerializeField]
-    private Transform PointA, PointB;  //You need to add PointA and PointB as game objects, it will determine where the enemy will patrol.
-    public int speed;
+    private Transform PointA, PointB;  //You need to add PointA and PointB as game objects, it will determine where the object/character will patrol.
+    public int speed;  
  
 
 
     void Start()
     {
-      Sprite = GetComponentInChildren<SpriteRenderer>(); // get sprite from ... sprite ?
+      Sprite = GetComponentInChildren<SpriteRenderer>(); // get sprite from ... sprite ? (in my case sprite was a children object)
     }
 
 
